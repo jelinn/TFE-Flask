@@ -8,6 +8,7 @@
     <form action="/runstatus" method="POST">Workspace to run : <input name="workspaceName"><input type="submit" value="Run Workspace"></form>
 
     <h3> List of Current Workspaces in Organization</h3>
+    
     {% for workspace in workspaces %}
         <ul><li>Workspace Name : {{ workspace.name }}</li>
         </ul>

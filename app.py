@@ -21,7 +21,7 @@ org = client.set_organization(id='<ORG_ID>')
 
 @app.route('/')
 def home():
-  return render_template("index.html", message = "Self Service Infrastructure Portal")
+  return render_template("index.html", message = "Welcome")
 
 
 @app.route('/create-workspace')
@@ -46,8 +46,8 @@ def create():
                 auto_apply=False,
                 queue_all_runs=False,
                 working_directory='/')
-
-  return render_template('/', message="Successfully created Workspace")
+  flash('You created workspace')
+  return render_template('index.html', message="Successfully created Workspace")
 
 @app.route("/list-workspaces")
 def list():
@@ -85,4 +85,5 @@ def delete():
     return render_template('index.html', message="Successfully deleted workspace")
 
 if __name__ == '__main__':
+  app.secret_key = 'verysupersecret'
   app.run()

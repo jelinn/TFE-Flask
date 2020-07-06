@@ -2,16 +2,17 @@
 
 {% block content %}
 <div>
- 
+ <center>
     <h1>Workspace Run History</h1>
         
     <form action="/showdetails" method="POST">Workspace Name to Show Run History : <input name="workspaceName"><input type="submit" value="Show Run History - Name"></form>
 
-<h3> List of Current Workspaces in Organization</h3>
+    <h3> List of Current Workspaces in Organization</h3>
     {% for workspace in workspaces %}
     <ul><li>Workspace Name : {{ workspace.name }}</li>
     </ul>
     
     {% endfor %}
+    </center>
 </div>
 {% endblock %}
