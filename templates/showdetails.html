@@ -1,0 +1,19 @@
+
+
+{% extends 'layout.html' %}
+{% block content %}
+<div>
+    <center><h1>List Workspace Run History</h1>
+    <h4>Run Id for {{ workspace.name }}</h4></center>
+        
+    {% for run in history %}
+    <ul>
+
+    <li> ID : {{ run.id }}</li>
+    <li> Status : {{ run.status }}</li>
+    <li> Timestamp : {{ run.status_timestamps }}</li>
+    <br>
+    </ul>
+    
+    {% endfor %}</div>
+{% endblock %}

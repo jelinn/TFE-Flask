@@ -3,9 +3,9 @@
 {% block content %}
 <div>
  
-    <h1>Create a Run</h1>
+    <h1>Workspace Run History</h1>
         
-    <form action="/runstatus" method="POST">Workspace to run : <input name="workspaceName"><input type="submit" value="Run Workspace"></form>
+    <form action="/showdetails" method="POST">Workspace Name to Show Run History : <input name="workspaceName"><input type="submit" value="Show Run History - Name"></form>
 
 <h3> List of Current Workspaces in Organization</h3>
     {% for workspace in workspaces %}

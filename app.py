@@ -55,15 +55,26 @@ def list():
 def createRun():
   return render_template('run.html', workspaces=org.list_workspaces())
 
-@app.route("/run", methods=['GET','POST'])
+@app.route("/run")
 def run():
+  workspace = org.get_workspace(request.form['workspaceName'])
+
+  return render_template('run.html', workspace=workspace)
+
+@app.route("/runstatus", methods=['POST'])
+def runStatus():
   workspace = org.get_workspace(request.form['workspaceName'])
   run = workspace.run(message="Testing self-service portal", destroy_flag=False)
   return render_template('runstatus.html', plan=run.get_plan_output())
 
 @app.route("/details")
-def getDetails():
-  return render_template('/', workspaces=org.list_workspaces() )
+def details():
+  return render_template('details.html', workspaces=org.list_workspaces() )
+
+@app.route("/showdetails", methods=['POST'])
+def showDetails():
+  workspace = org.get_workspace(request.form['workspaceName'])  
+  return render_template('showdetails.html', history=workspace.list_runs(page=1,page_size=100),workspace=workspace )
 
 @app.route("/delete-workspace")
 def deleteWorksace():
