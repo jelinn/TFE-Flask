@@ -1,13 +1,15 @@
 from flask import Flask, request, render_template, flash
 import pyterprise
 import os
+import requests
 
 DEBUG = True
+tfe_token = 'uG3WXbx9eyJJgw.atlasv1.pe0WsMiPRzExycGXlLLSGylmyxIOe3PF3xl9QZVOlenVAp6TlD8VNMzLBwj1PzEHm84'
 app = Flask(__name__, template_folder="templates")
   
 # Set up pyterprise for TFC API
 client = pyterprise.Client()
-client.init(token='uG3WXbx9eyJJgw.atlasv1.pe0WsMiPRzExycGXlLLSGylmyxIOe3PF3xl9QZVOlenVAp6TlD8VNMzLBwj1PzEHm84', url='https://app.terraform.io')
+client.init(token=tfe_token, url='https://app.terraform.io')
 org = client.set_organization(id='jlinn-alt-test')
 
 
@@ -51,20 +53,16 @@ def create():
 def list():
   return render_template('workspaces.html', workspaces=org.list_workspaces() )
 
-@app.route("/createrun")
-def createRun():
-  return render_template('run.html', workspaces=org.list_workspaces())
-
 @app.route("/run")
 def run():
-  workspace = org.get_workspace(request.form['workspaceName'])
-
-  return render_template('run.html', workspace=workspace)
+  return render_template('run.html', workspaces=org.list_workspaces())
 
 @app.route("/runstatus", methods=['POST'])
 def runStatus():
   workspace = org.get_workspace(request.form['workspaceName'])
-  run = workspace.run(message="Testing self-service portal", destroy_flag=False)
+  # Having issues with runs and plans/apply with Pyterprise. 
+  print("workspace = " + str(workspace))
+  run = workspace.plan_apply(message="Testing self-service portal", destroy_flag=False)
   return render_template('runstatus.html', plan=run.get_plan_output())
 
 @app.route("/details")
