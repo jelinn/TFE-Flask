@@ -4,13 +4,13 @@ import os
 import requests
 
 DEBUG = True
-tfe_token = '7zNrDbQSmryfqw.atlasv1.L0vCHOWe8qgmcKp77P4LdvOnWLXU3vd6O0o2z9bfIBe2uJwHmdynpmezMva6XzE9wvI'
+tfe_token = '<TFE_TOKEN>'
 app = Flask(__name__, template_folder="templates")
   
 # Set up pyterprise for TFC API
 client = pyterprise.Client()
 client.init(token=tfe_token, url='https://app.terraform.io')
-org = client.set_organization(id='jlinn-alt-test')
+org = client.set_organization(id='<ORG_ID>')
 
 
 #Capabilities
