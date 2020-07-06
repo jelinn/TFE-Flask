@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div>
+    <center><h1>List Workspaces</h1></center>
+        
+    {% for workspace in workspaces %}
+    <ul>
+    <h4>Workspace Name : {{ workspace.name }}</h4>
+   <li> ID : {{ workspace.id }}</li>
+   <li> Time Created : {{ workspace.created_at }}</li>
+    <br>
+    </ul>
+    
+    {% endfor %}</div>
+{% endblock %}

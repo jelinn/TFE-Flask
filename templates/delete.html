@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div>
+ 
+    <h1>Delete a Workspace</h1>
+    <h3>Proceed with caution</h3>
+        
+    <form action="/delete" method="POST">Workspace Name to Delete : <input name="workspaceName"><input type="submit" value="Delete Workspace - Name"></form>
+
+<h3> List of Current Workspaces in Organization</h3>
+    {% for workspace in workspaces %}
+    <ul><li>Workspace Name : {{ workspace.name }}</li>
+    </ul>
+    
+    {% endfor %}
+</div>
+{% endblock %}
