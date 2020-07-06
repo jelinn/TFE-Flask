@@ -4,7 +4,7 @@ import os
 import requests
 
 DEBUG = True
-tfe_token = 'uG3WXbx9eyJJgw.atlasv1.pe0WsMiPRzExycGXlLLSGylmyxIOe3PF3xl9QZVOlenVAp6TlD8VNMzLBwj1PzEHm84'
+tfe_token = '<TFE_TOKEN>'
 app = Flask(__name__, template_folder="templates")
   
 # Set up pyterprise for TFC API
