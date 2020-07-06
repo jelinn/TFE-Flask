@@ -4,7 +4,7 @@ import os
 import requests
 
 DEBUG = True
-tfe_token = 'uG3WXbx9eyJJgw.atlasv1.pe0WsMiPRzExycGXlLLSGylmyxIOe3PF3xl9QZVOlenVAp6TlD8VNMzLBwj1PzEHm84'
+tfe_token = '7zNrDbQSmryfqw.atlasv1.L0vCHOWe8qgmcKp77P4LdvOnWLXU3vd6O0o2z9bfIBe2uJwHmdynpmezMva6XzE9wvI'
 app = Flask(__name__, template_folder="templates")
   
 # Set up pyterprise for TFC API
@@ -21,7 +21,7 @@ org = client.set_organization(id='jlinn-alt-test')
 
 @app.route('/')
 def home():
-  return render_template("index.html", message = "Self Service Infrastructure Portal")
+  return render_template("index.html", message = "Welcome")
 
 
 @app.route('/create-workspace')
@@ -46,8 +46,8 @@ def create():
                 auto_apply=False,
                 queue_all_runs=False,
                 working_directory='/')
-
-  return render_template('/', message="Successfully created Workspace")
+  flash('You created workspace')
+  return render_template('index.html', message="Successfully created Workspace")
 
 @app.route("/list-workspaces")
 def list():
@@ -85,4 +85,5 @@ def delete():
     return render_template('index.html', message="Successfully deleted workspace")
 
 if __name__ == '__main__':
+  app.secret_key = 'verysupersecret'
   app.run()

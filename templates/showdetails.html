@@ -4,7 +4,7 @@
 {% block content %}
 <div>
     <center><h1>List Workspace Run History</h1>
-    <h4>Run Id for {{ workspace.name }}</h4></center>
+    <h3>Run Id for {{ workspace.name }}</h3>
         
     {% for run in history %}
     <ul>
@@ -16,4 +16,5 @@
     </ul>
     
     {% endfor %}</div>
+</center>
 {% endblock %}
