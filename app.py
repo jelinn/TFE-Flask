@@ -10,7 +10,7 @@ app = Flask(__name__, template_folder="templates")
 # Set up pyterprise for TFC API
 client = pyterprise.Client()
 client.init(token=tfe_token, url='https://app.terraform.io')
-org = client.set_organization(id='jlinn-alt-test')
+org = client.set_organization(id='<ORG_ID>')
 
 
 #Capabilities
